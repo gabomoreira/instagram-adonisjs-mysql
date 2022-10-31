@@ -1,0 +1,61 @@
+@layout('layouts/app')
+@set('title', 'Sign Up')
+
+@section('body')
+    <section class="flex align-center justify-center bg-[#FAFBFB] h-screen">
+       
+        <div class="flex flex-col gap-4 align-center justify-center" style="width: 22rem">
+
+            <article class="border bg-[#ffffff] p-7 ">
+                <h1 class="text-center text-2xl font-bold">Gabogram</h1>
+                <h2 class="text-[#8F8F8E] mt-5 text-center text-lg font-semibold">Sign up to see photos and videos from your friends.</h2>
+
+                <div class="flex align-center justify-center my-4">
+                    <div class="w-full bg-[#eee]" style="height: 1px; margin: auto"></div>
+                    <span class="mx-4 font-medium text-sm text-[#8F8F8E]">OR</span>
+                    <div class="w-full bg-[#eee]" style="height: 1px; margin: auto"></div>
+                </div>
+
+                <form action="/signup" method="POST" class="flex flex-col gap-1">
+
+                    <div>
+                        <input class="text-sm rounded p-1 border bg-[#FAFBFB] w-full" type="email" name="email" id="email" placeholder="Mobile Number or Email">
+                        @if(flashMessages.has('errors.email'))
+                        <small class="text-red-600 text-xs">{{flashMessages.get('errors.email')}}</small>
+                        @endif
+                    </div>
+                    <div>
+                        <input class="text-sm rounded p-1 border bg-[#FAFBFB] w-full" type="text" name="name" id="name" placeholder="Full Name">
+                        @if(flashMessages.has('errors.name'))
+                        <small class="text-red-600 text-xs">{{flashMessages.get('errors.name')}}</small>
+                        @endif
+                    </div>
+                    <div>
+                        <input class="text-sm rounded p-1 border bg-[#FAFBFB] w-full" type="text" name="username" id="username" placeholder="Username">
+                        @if(flashMessages.has('errors.username'))
+                        <small class="text-red-600 text-xs">{{flashMessages.get('errors.username')}}</small>
+                        @endif
+                        </div>
+                    <div>
+                        <input class="text-sm rounded p-1 border bg-[#FAFBFB] w-full" type="password" name="password" id="password" placeholder="Password">
+                        @if(flashMessages.has('errors.password'))
+                        <small class="text-red-600 text-xs">{{flashMessages.get('errors.password')}}</small>
+                        @endif    
+                    </div>
+
+                    <p class="text-gray-500 text-sm text-center my-2">By signing up, you agree to our Terms , Privacy Policy and Cookies Policy.</p>
+
+                    <div>
+                        <input class="font-medium cursor-pointer w-full bg-[#0195F7] text-white py-1 rounded hover:bg-[#B2DEFD]" type="submit" value="Sign Up">
+                    </div>
+                </form>
+
+            </article>
+
+            <article class=" flex border p-5 bg-[#ffffff] align-center justify-center gap-4 ">
+                <p>Have an account? </p> <a href="/login" class="text-blue-700 cursor-pointer">Log in</a>
+            </article>
+        </div>
+
+    </section>
+@end
